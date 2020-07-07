@@ -88,12 +88,6 @@ public class WebDriverUtils {
 		
 		public void refresh() {
 			driver.navigate().refresh();
-//			String url = p.getProperty("url");
-//			ATUReports.add("Launch URL",url, LogAs.INFO, new CaptureScreen(
-//                    ScreenshotOf.BROWSER_PAGE));
-//			driver.get(url);
-//			ATUReports.add("Loaded URL",driver.getCurrentUrl() , LogAs.PASSED, new CaptureScreen(
-//                    ScreenshotOf.BROWSER_PAGE));
 		}
 		
 		public void navigate(String url) {
@@ -260,27 +254,21 @@ public class WebDriverUtils {
 			driver.switchTo().defaultContent();
 		}
 		
-		public void tableFetch() {
+		public void tableFetch(String tagname) {
 			//Finding the row count
 			List<WebElement>TotalRowsList = driver.findElements(By.xpath("//*/table/tbody/tr"));
 			int rowcount = TotalRowsList.size();
 			System.out.println("Total number of Rows in the table are : "+rowcount);
 			
-//			//Finding the collumn count
-//			List<WebElement> TotalColsList = driver.findElements(By.xpath("//*/table/tbody/tr[1]/td"));
-//			int colcount = TotalColsList.size();
-//			System.out.println("Total Number of Columns in the table are: "+colcount);
-			
 			String before_xpath = "//*/table/tbody/tr[";
 			String after_xpath = "]/td[1]/strong/a";
-			String name = "Silly";
 			int Cnt=0;
 						
 			for(int i=1; i<rowcount; i++ ) {
 				String tablevalue = driver.findElement(By.xpath(before_xpath + i + after_xpath)).getText();
 				System.out.println(tablevalue);
 					
-					if(tablevalue.contains(name)) {
+					if(tablevalue.contains(tagname)) {
 						System.out.println("*****Name found in the table*****");
 						Cnt = Cnt+1;
 						break;
