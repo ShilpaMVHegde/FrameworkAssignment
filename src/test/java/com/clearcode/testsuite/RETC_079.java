@@ -25,7 +25,7 @@ public class RETC_079 extends TestSetup{
 		wdu.type(FeaturePage.desc, descr);
 		wdu.click(FeaturePage.nw_feature_btn);
 		wdu.refresh();
-		wdu.tableFetch();
+		wdu.tableFetch(tagname);
 		
 	}
 	
